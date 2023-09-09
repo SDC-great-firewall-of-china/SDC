@@ -151,14 +151,7 @@
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
 <a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -166,7 +159,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -179,9 +171,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -204,7 +194,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -223,7 +212,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -234,9 +222,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -261,8 +247,7 @@ const basePath = <span class="cstat-no" title="statement not covered" >'https://
 &nbsp;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >reviewsRouter.get('/getAllReviews', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {</span>
-  // let productId = parseInt(req.query.product_id);
-  let productId = <span class="cstat-no" title="statement not covered" >37311;</span>
+  let productId = <span class="cstat-no" title="statement not covered" >37312;</span>
   let options = <span class="cstat-no" title="statement not covered" >{</span>
     headers: { Authorization: process.env.TOKEN},
     params: {
@@ -273,11 +258,9 @@ const basePath = <span class="cstat-no" title="statement not covered" >'https://
     }
   };
 &nbsp;
-  // console.log(req.url);
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  axios.get(basePath + '/reviews', options)</span>
     .then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
-      // console.log(response.data.results);
 <span class="cstat-no" title="statement not covered" >      res.send(response.data.results);</span>
     })
     .catch(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
@@ -289,7 +272,7 @@ const basePath = <span class="cstat-no" title="statement not covered" >'https://
 &nbsp;
 <span class="cstat-no" title="statement not covered" >reviewsRouter.get('/getRatings', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {</span>
   // let productId = parseInt(req.query.product_id);
-  let productId = <span class="cstat-no" title="statement not covered" >37311;</span>
+  let productId = <span class="cstat-no" title="statement not covered" >37315;</span>
   let options = <span class="cstat-no" title="statement not covered" >{</span>
     headers: { Authorization: process.env.TOKEN},
     params: {
@@ -299,7 +282,6 @@ const basePath = <span class="cstat-no" title="statement not covered" >'https://
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  axios.get(basePath + '/reviews/meta', options)</span>
     .then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
-      // console.log(response.data);
 <span class="cstat-no" title="statement not covered" >      res.send(response.data);</span>
     })
     .catch(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
@@ -318,7 +300,6 @@ const basePath = <span class="cstat-no" title="statement not covered" >'https://
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  axios.post(basePath + '/reviews', requestData, options)</span>
     .then(<span class="fstat-no" title="function not covered" >(r</span>esponse) =&gt; {
-      // console.log(requestData);
 <span class="cstat-no" title="statement not covered" >      res.status(201).send(response.data); </span>// Successfully created
     })
     .catch(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
@@ -329,9 +310,7 @@ const basePath = <span class="cstat-no" title="statement not covered" >'https://
 });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >reviewsRouter.put('/updateHelpful/:review_id', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {</span>
-  // console.log(req.url);
   const reviewId = <span class="cstat-no" title="statement not covered" >req.params.review_id;</span>
-  // console.log(reviewId);
 &nbsp;
   const options = <span class="cstat-no" title="statement not covered" >{</span>
     headers: { Authorization: process.env.TOKEN },
@@ -355,7 +334,7 @@ const basePath = <span class="cstat-no" title="statement not covered" >'https://
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-08-24T23:59:37.034Z
+                at 2023-09-01T21:17:03.580Z
             </div>
         <script src="../prettify.js"></script>
         <script>

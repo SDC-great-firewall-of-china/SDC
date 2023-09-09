@@ -1,6 +1,7 @@
 /** @type {import('jest').Config} */
 const config = {
-  collectCoverage: true,
+  preset: "@shelf/jest-mongodb",
+  collectCoverage: false,
   collectCoverageFrom: ["client/src/components/componentA/**/*.{js,jsx,ts,tsx}","!<rootDir>/node_modules/", "server/reviewsRoutes.js"],
   coverageThreshold: {
     "global": {
@@ -8,7 +9,7 @@ const config = {
       "statements": 90
     }},
   coverageDirectory: 'coverage',
-  testEnvironment: 'jsdom',
+  // testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
     '\\.svg$': 'identity-obj-proxy',

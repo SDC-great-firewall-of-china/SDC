@@ -23,6 +23,7 @@ const OverviewModule = () => {
   useEffect(() => {
     axios.get('/api/product')
       .then(response => {
+        console.log(response);
         setProductData(response.data);
       })
       .catch(error => {
@@ -34,6 +35,7 @@ const OverviewModule = () => {
   useEffect(() => {
     axios.get('/api/images')
       .then(response => {
+        console.log(response);
         const styleImages = response.data.results[0].photos.map(photo => photo.url);
         setImages(styleImages);
         const stylesData = response.data.results;

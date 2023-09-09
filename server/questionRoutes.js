@@ -15,12 +15,13 @@ questionRouter = (req, res) => {
     }
   }).then((result) => {
     return result.data
-  }).catch((err) => console.error(err))
+  }).catch((err) => {
+    // console.error(err)
+  })
 };
 
 postQuestionsRoute = (req, res) => {
 const posturl = postPath + req.params.question_id + "/answers"
-console.log(req.body)
   axios.post(posturl, req.body, {
     headers: {
       'authorization': req.headers.authorization
@@ -28,7 +29,7 @@ console.log(req.body)
   }).then((result) => {
     // console.log(result)
   }).catch((err) => {
-    console.error(err)
+    // console.error(err)
   })
 }
 
@@ -50,19 +51,16 @@ updateHelpful = (req,res) => {
       'authorization': req.headers.authorization
     }
   }).then((result) => {
-    console.log("result",result);
   }).catch((err) => console.error(err))
 }
 
 addQuestion = (req, res) => {
   req.body.product_id = Number(req.params.product_id);
-  console.log(req.body)
   axios.post(postPath, req.body,  {
     headers: {
       'authorization': req.headers.authorization
     }
   }).then((result) => {
-    console.log(result)
   }).catch((err) => console.error("err"))
 }
 
@@ -73,7 +71,7 @@ axios.put(repQueUrl, '', {
   headers: {
     'authorization': req.headers.authorization
   }
-}).then((result) => console.log(result)).catch((err) => console.error(err))
+}).then((result) => {}).catch((err) => console.error(err))
 }
 
 reportAnswer = (req,res) => {
@@ -82,7 +80,7 @@ reportAnswer = (req,res) => {
   headers: {
     'authorization': req.headers.authorization
   }
-}).then((result) => console.log(result)).catch((err) => console.error(err))
+}).then((result) => {}).catch((err) => console.error(err))
 }
 
 exports.questionRouter = questionRouter;

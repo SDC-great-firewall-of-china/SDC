@@ -1,12 +1,15 @@
 var compression = require('express-compression')
 const express = require('express');
-require('dotenv').config()
+require('dotenv').config();
 const {questionRouter, postQuestionsRoute, updateHelpful, updateAnswer, addQuestion , reportAnswer, reportQuestion} = require('./questionRoutes.js')
 const bodyParser = require('body-parser');
 const path = require('path');
 const axios = require('axios');
 const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
 const reviewsRouter = require('./reviewsRoutes.js');
+const db = require('./db.js');
+const Promise = require("bluebird");
+const {getProduct, getStyles} = require('./controller.js')
 
 // Create Express app
 const app = express();
@@ -83,38 +86,13 @@ app.use('/reviews', reviewsRouter);
 // Heith section
 
 //View Images
-app.get('/api/images', (req, res) => {
-  const requestOptions = {
-    headers: {
-      Authorization: process.env.TOKEN,
-    }
-  };
+app.get('/api/images', getStyles);
 
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37315/styles', requestOptions)
-    .then(response => {
-      res.json(response.data);
-    })
-    .catch(error => {
-      console.error('Error fetching images:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    });
-});
+app.get('/api/product', getProduct);
 
-app.get('/api/product', (req, res) => {
-  const requestOptions = {
-    headers: {
-      Authorization: process.env.TOKEN,
-    }
-  };
-
-  axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe/products/37315', requestOptions)
-  .then(response => {
-    res.json(response.data);
-  })
-    .catch(error => {
-      console.error('Error fetching product info:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    });
+//for load testing verification
+app.get('/loaderio-99691c5b04268daffcb3c06df4d0ef4d.txt', (req, res) => {
+  res.end('loaderio-99691c5b04268daffcb3c06df4d0ef4d');
 });
 
 //-------------------------------------------------------------------------------------------
