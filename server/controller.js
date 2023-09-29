@@ -6,19 +6,28 @@ const redisClient = redis.createClient({host:'localhost',port:6379});
 redisClient.on('connect', () => {
   console.log('connected to redis successfully!');
 })
+// var ID = 37311
+// ID = Math.floor(Math.random() * (1037321-37311) + 37311);
+// var ID;
+
 
 
 
 exports.getProduct = (req, res) => {
-  redisClient.get(37315 +'product',(err, reply) => {
+  // var ID = 37315;
+  var ID = Math.floor(Math.random() * (1037321-37311) + 37311);
+  redisClient.get(ID +'product',(err, reply) => {
       if(err) {
           console.log(err);
       } else if(reply) {
           res.end(reply);
       } else {
         var productObj = {};
-        db.products.find({id: 37315})
+        db.products.find({id: ID})
           .then((result) => {
+            if (result.length === 0) {
+              res.end('Product does not exist')
+            }
             productObj.id = result[0].id;
             productObj.campus = result[0].campus;
             productObj.name = result[0].name;
@@ -28,7 +37,7 @@ exports.getProduct = (req, res) => {
             productObj.default_price = result[0].default_price+'.00';
             productObj.created_at = result[0].created_at;
             productObj.updated_at = result[0].updated_at;
-            return db.features.find({product_id: 37315}).sort({id:1})
+            return db.features.find({product_id: ID}).sort({id:1})
           })
           .then((result) => {
             productObj.features = [];
@@ -38,10 +47,10 @@ exports.getProduct = (req, res) => {
                 value: obj.value
               })
             });
-            return redisClient.set(37315 +'product', JSON.stringify(productObj))
+            return redisClient.set(ID +'product', JSON.stringify(productObj))
           })
           .then(() => {
-            return redisClient.expire(37315 +'product', 3600);
+            return redisClient.expire(ID +'product', 3600);
           })
           .then(() => {
             res.json(productObj);
@@ -55,17 +64,22 @@ exports.getProduct = (req, res) => {
 
 
 exports.getStyles = (req, res) => {
-  redisClient.get(37315+'images',(err, reply) => {
+  // var ID = 37315;
+  var ID = Math.floor(Math.random() * (1037321-37311) + 37311);
+  redisClient.get(ID+'images',(err, reply) => {
     if(err) {
         console.log(err);
     } else if(reply) {
       res.end(reply);
     } else {
       var styleObj = {};
-      styleObj.product_id = '37315';
+      styleObj.product_id = ID+'';
       styleObj.results = [];
-      db.styles.find({productId: 37315})
+      db.styles.find({productId: ID})
         .then((results) => {
+          if (results.length === 0) {
+            res.end('Product does not exist')
+          }
           var counter = 0;
           results.forEach((result, index)=> {
             var obj = {};
@@ -95,9 +109,9 @@ exports.getStyles = (req, res) => {
                 counter++;
                 if (counter === results.length) {
                   styleObj.results = _.sortBy(styleObj.results, (result) => {return result.style_id});
-                  return redisClient.set(37315+'images', JSON.stringify(styleObj))
+                  return redisClient.set(ID+'images', JSON.stringify(styleObj))
                   .then(() => {
-                    return redisClient.expire(37315+'images', 3600);
+                    return redisClient.expire(ID+'images', 3600);
                   })
                   .then(() => {
                     res.json(styleObj);
